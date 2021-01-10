@@ -20,7 +20,7 @@ deploy:
         branch: master
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-
+#just to add some comment
 #AWS Beanstalk would automatically create an S3 bucket to store
 #all the details of site's files (in my case, there was old bucket
 #from certification times)
