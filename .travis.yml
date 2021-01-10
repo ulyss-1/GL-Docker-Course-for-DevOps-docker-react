@@ -9,7 +9,22 @@ before_install:
 script:
     - docker run -e CI=true tracer2020/docker-react-test npm run test
 
+deploy:
+    provider: elasticbeanstalk
+    region: "eu-central-1"
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-eu-central-1-295895857794"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
 
+#AWS Beanstalk would automatically create an S3 bucket to store
+#all the details of site's files (in my case, there was old bucket
+#from certification times)
+#
 #after_success:
 #    - docker build -t vladimirpodr/multi-client -f ./client
 #    - docker build -t vladimirpodr/multi-nginx -f ./nginx
